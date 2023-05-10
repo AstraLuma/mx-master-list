@@ -21,4 +21,5 @@ switch data can be found in YAML files in `data/Switch`, with the schema:
 
 Any unknown fields should be left blank.
 
-If that makes no sense to you, feel free to check the [issues]
+If that makes no sense to you, feel free to check the [issues](https://github.com/AstraLuma/mx-master-list/issues)
+and add manufacturers if you don't see one you know (be sure to include information links).
