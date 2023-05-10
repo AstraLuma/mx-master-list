@@ -3,6 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{% if page_title %}{{ page_title }}{% else %}{{ site_title }}{% endif %}{% endblock %}</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      width: 80ch;
+      margin: auto;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.25em 0.5em;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
