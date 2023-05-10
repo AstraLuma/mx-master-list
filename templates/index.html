@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>{{site_title}}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Kind</th>
+        <th>Weight</th>
+        <th>Travel</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for switch in switches %}
+      <tr>
+        {% if switch.link %}
+        <th><a href="{{ switch.link }}">{{ switch.name }}</a></th>
+        {% endif %}
+
+        {% if switch.feel and switch.noise %}
+        <td>{{ switch.feel }} {{ switch.noise }}</td>
+        {% elif switch.feel %}
+        <td>{{ switch.feel }}</td>
+        {% elif switch.noise %}
+        <td>{{ switch.noise }}</td>
+        {% else %}
+        <td>??</td>
+        {% endif %}
+
+        {% if switch.weight is not none %}
+        <td>{{ switch.weight }}g</td>
+        {% else %}
+        <td>??</td>
+        {% endif %}
+
+        {% if switch.travel is not none %}
+        <td>{{ switch.travel }}mm</td>
+        {% else %}
+        <td>??</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,5 @@
+project-name: Keyswitch Master List
+base-path: /
+context:
+  static:
+    site_title: MX Master List

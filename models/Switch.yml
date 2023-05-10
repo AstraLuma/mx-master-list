@@ -1,0 +1,8 @@
+name: String
+link: String
+feel: String  # FIXME: Enum("tactile", "linear")
+noise: String  # FIXME: Enum("quiet", "clicky")
+weight: Integer  # in grams FIXME: Float
+point: String  # in mm FIXME: Float
+travel: Integer  # in mm FIXME: Float
+note: Text

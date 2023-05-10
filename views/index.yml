@@ -1,0 +1,5 @@
+path: /
+template: index
+context:
+  dynamic:
+    switches: session.query(Switch).order_by(Switch.name.asc()).all()
