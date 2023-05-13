@@ -22,14 +22,31 @@
       --blue:    lab(55% -10 -45);
       --cyan:    lab(60% -35 -05);
       --green:   lab(60% -20  65);
+    }
 
-      /* Functions in Solarized light */
-      --background: var(--base3);
-      --bghilights: var(--base2);
-      --secondary:  var(--base1);
-      --primary:    var(--base00);
-      --emphasis:   vat(--base01);
+    /* Functions in Solarized light */
+    @media (prefers-color-scheme: light) {
+      body {
+        --background: var(--base3);
+        --bghilights: var(--base2);
+        --secondary:  var(--base1);
+        --primary:    var(--base00);
+        --emphasis:   vat(--base01);
+      }
+    }
 
+    /* Functions in Solarized dark */
+    @media (prefers-color-scheme: dark) {
+      body {
+        --background: var(--base03);
+        --bghilights: var(--base02);
+        --secondary:  var(--base01);
+        --primary:    var(--base0);
+        --emphasis:   var(--base1);
+      }
+    }
+
+    body {
       font-family: sans-serif;
       width: 80ch;
       margin: auto;
