@@ -5,16 +5,45 @@
   <title>{% block title %}{% if page_title %}{{ page_title }}{% else %}{{ site_title }}{% endif %}{% endblock %}</title>
   <style>
     body {
+      /* Solarized color palette */
+      --base03:  lab(15% -12 -12);
+      --base02:  lab(20% -12 -12);
+      --base01:  lab(45% -07 -07);
+      --base00:  lab(50% -07 -07);
+      --base0:   lab(60% -06 -03);
+      --base1:   lab(65% -05 -02);
+      --base2:   lab(92% -00  10);
+      --base3:   lab(97%  00  10);
+      --yellow:  lab(60%  10  65);
+      --orange:  lab(50%  50  55);
+      --red:     lab(50%  65  45);
+      --magenta: lab(50%  65 -05);
+      --violet:  lab(50%  15 -45);
+      --blue:    lab(55% -10 -45);
+      --cyan:    lab(60% -35 -05);
+      --green:   lab(60% -20  65);
+
+      /* Functions in Solarized light */
+      --background: var(--base3);
+      --bghilights: var(--base2);
+      --secondary:  var(--base1);
+      --primary:    var(--base00);
+      --emphasis:   vat(--base01);
+
       font-family: sans-serif;
       width: 80ch;
       margin: auto;
+
+      background-color: var(--background);
+      color: var(--primary);
     }
     th, td {
       text-align: left;
       padding: 0.25em 0.5em;
     }
-    tbody > tr:nth-child(odd)  { background-color:#eee; }
-    tbody > tr:nth-child(even) { background-color:#fff; }
+    thead > tr                 { background-color: var(--bghilights); }
+    tbody > tr:nth-child(even) { background-color: var(--bghilights); }
+    tbody > tr:nth-child(odd)  { background-color: var(--background); }
   </style>
 </head>
 <body>
