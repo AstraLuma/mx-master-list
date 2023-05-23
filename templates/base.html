@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>{% block title %}{% if page_title %}{{ page_title }}{% else %}{{ site_title }}{% endif %}{% endblock %}</title>
   <style>
-    body {
+    html {
       /* Solarized color palette */
       --base03:  #002b36;
       --base02:  #073642;
@@ -25,7 +25,7 @@
     }
 
     @supports (color: lab(0% 0 0)) {
-      body {
+      html {
         --base03:  lab(15% -12 -12);
         --base02:  lab(20% -12 -12);
         --base01:  lab(45% -07 -07);
@@ -47,7 +47,7 @@
 
     /* Functions in Solarized light */
     @media (prefers-color-scheme: light) {
-      body {
+      html {
         --background: var(--base3);
         --bghilights: var(--base2);
         --secondary:  var(--base1);
@@ -58,7 +58,7 @@
 
     /* Functions in Solarized dark */
     @media (prefers-color-scheme: dark) {
-      body {
+      html {
         --background: var(--base03);
         --bghilights: var(--base02);
         --secondary:  var(--base01);
@@ -67,7 +67,7 @@
       }
     }
 
-    body {
+    html {
       font-family: sans-serif;
       width: 80ch;
       margin: auto;
