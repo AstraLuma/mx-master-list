@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>{% block title %}{% if page_title %}{{ page_title }}{% else %}{{ site_title }}{% endif %}{% endblock %}</title>
   <style>
+    /* Fallback color palette definition in sRGB gamut.  */
     html {
-      /* Solarized color palette */
       --base03:  #002b36;
       --base02:  #073642;
       --base01:  #586e75;
@@ -24,16 +24,10 @@
       --green:   #859900;
     }
 
+    /* Transparent upgrade to CIELAB gamut */
     @supports (color: lab(0% 0 0)) {
       html {
-        --base03:  lab(15% -12 -12);
-        --base02:  lab(20% -12 -12);
-        --base01:  lab(45% -07 -07);
-        --base00:  lab(50% -07 -07);
-        --base0:   lab(60% -06 -03);
-        --base1:   lab(65% -05 -02);
-        --base2:   lab(92% -00  10);
-        --base3:   lab(97%  00  10);
+        /* Accent colors */
         --yellow:  lab(60%  10  65);
         --orange:  lab(50%  50  55);
         --red:     lab(50%  65  45);
@@ -42,21 +36,31 @@
         --blue:    lab(55% -10 -45);
         --cyan:    lab(60% -35 -05);
         --green:   lab(60% -20  65);
+
+        /* Base colors; do not use directly, instead refer to the "roles" defined next. */
+        --base03:  lab(15% -12 -12);
+        --base02:  lab(20% -12 -12);
+        --base01:  lab(45% -07 -07);
+        --base00:  lab(50% -07 -07);
+        --base0:   lab(60% -06 -03);
+        --base1:   lab(65% -05 -02);
+        --base2:   lab(92% -00  10);
+        --base3:   lab(97%  00  10);
       }
     }
 
-    /* Functions in Solarized light */
+    /* Variant-independent "roles" for light mode… */
     @media (prefers-color-scheme: light) {
       html {
-        --background: var(--base3);
-        --bghilights: var(--base2);
-        --secondary:  var(--base1);
-        --primary:    var(--base00);
-        --emphasis:   vat(--base01);
+        --background: var(--base3);  /* The canvas' background. */
+        --bghilights: var(--base2);  /* Background for hilighted regions. */
+        --secondary:  var(--base1);  /* De-emphasized foreground elements. */
+        --primary:    var(--base00); /* Primary foreground elements. */
+        --emphasis:   vat(--base01); /* Emphasized foreground elements. */
       }
     }
 
-    /* Functions in Solarized dark */
+    /* … and dark mode */
     @media (prefers-color-scheme: dark) {
       html {
         --background: var(--base03);
@@ -76,6 +80,7 @@
       color: var(--primary);
     }
 
+    /* Keep the blue/violet convention for links. */
     a {
       color: var(--blue);
     }
@@ -83,10 +88,12 @@
       color: var(--violet);
     }
 
+    /* Styling for (data) tables */
     th, td {
       text-align: left;
       padding: 0.25em 0.5em;
     }
+    /* Hilight the background of header(s) and alternating rows. */
     thead > tr                 { background-color: var(--bghilights); }
     tbody > tr:nth-child(even) { background-color: var(--bghilights); }
     tbody > tr:nth-child(odd)  { background-color: var(--background); }
