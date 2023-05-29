@@ -4,17 +4,99 @@
   <meta charset="utf-8">
   <title>{% block title %}{% if page_title %}{{ page_title }}{% else %}{{ site_title }}{% endif %}{% endblock %}</title>
   <style>
-    body {
+    /* Fallback color palette definition in sRGB gamut.  */
+    html {
+      --base03:  #002b36;
+      --base02:  #073642;
+      --base01:  #586e75;
+      --base00:  #657b83;
+      --base0:   #839496;
+      --base1:   #93a1a1;
+      --base2:   #eee8d5;
+      --base3:   #fdf6e3;
+      --yellow:  #b58900;
+      --orange:  #cb4b16;
+      --red:     #dc322f;
+      --magenta: #d33682;
+      --violet:  #6c71c4;
+      --blue:    #268bd2;
+      --cyan:    #2aa198;
+      --green:   #859900;
+    }
+
+    /* Transparent upgrade to CIELAB gamut */
+    @supports (color: lab(0% 0 0)) {
+      html {
+        /* Accent colors */
+        --yellow:  lab(60%  10  65);
+        --orange:  lab(50%  50  55);
+        --red:     lab(50%  65  45);
+        --magenta: lab(50%  65 -05);
+        --violet:  lab(50%  15 -45);
+        --blue:    lab(55% -10 -45);
+        --cyan:    lab(60% -35 -05);
+        --green:   lab(60% -20  65);
+
+        /* Base colors; do not use directly, instead refer to the "roles" defined next. */
+        --base03:  lab(15% -12 -12);
+        --base02:  lab(20% -12 -12);
+        --base01:  lab(45% -07 -07);
+        --base00:  lab(50% -07 -07);
+        --base0:   lab(60% -06 -03);
+        --base1:   lab(65% -05 -02);
+        --base2:   lab(92% -00  10);
+        --base3:   lab(97%  00  10);
+      }
+    }
+
+    /* Variant-independent "roles" for light mode… */
+    @media (prefers-color-scheme: light) {
+      html {
+        --background: var(--base3);  /* The canvas' background. */
+        --bghilights: var(--base2);  /* Background for hilighted regions. */
+        --secondary:  var(--base1);  /* De-emphasized foreground elements. */
+        --primary:    var(--base00); /* Primary foreground elements. */
+        --emphasis:   vat(--base01); /* Emphasized foreground elements. */
+      }
+    }
+
+    /* … and dark mode */
+    @media (prefers-color-scheme: dark) {
+      html {
+        --background: var(--base03);
+        --bghilights: var(--base02);
+        --secondary:  var(--base01);
+        --primary:    var(--base0);
+        --emphasis:   var(--base1);
+      }
+    }
+
+    html {
       font-family: sans-serif;
       width: 80ch;
       margin: auto;
+
+      background-color: var(--background);
+      color: var(--primary);
     }
+
+    /* Keep the blue/violet convention for links. */
+    a {
+      color: var(--blue);
+    }
+    a:visited {
+      color: var(--violet);
+    }
+
+    /* Styling for (data) tables */
     th, td {
       text-align: left;
       padding: 0.25em 0.5em;
     }
-    tbody > tr:nth-child(odd)  { background-color:#eee; }
-    tbody > tr:nth-child(even) { background-color:#fff; }
+    /* Hilight the background of header(s) and alternating rows. */
+    thead > tr                 { background-color: var(--bghilights); }
+    tbody > tr:nth-child(even) { background-color: var(--bghilights); }
+    tbody > tr:nth-child(odd)  { background-color: var(--background); }
   </style>
 </head>
 <body>
